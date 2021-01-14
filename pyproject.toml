@@ -2,6 +2,7 @@
 name = "ungoliant"
 version = "0.1.0"
 description = "Unofficial CLI tool to display power outages in Perth"
+readme = "README.md"
 authors = ["Grahame Bowland <grahame@oreamnos.com.au>"]
 license = "GPL3"
 
