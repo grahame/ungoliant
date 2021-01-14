@@ -3,12 +3,11 @@ import requests
 import sys
 
 
-def format_date(d):
-    return d.strftime("%Y-%m-%d %H:%M")
-
-
-def parse_datetime(s):
-    return datetime.datetime.strptime(s, "%d/%m/%Y %I:%M %p")
+def normalise_datetime(s):
+    try:
+        return datetime.datetime.strptime(s, "%d/%m/%Y %I:%M %p").strftime("%Y-%m-%d %H:%M")
+    except ValueError:
+        return s
 
 
 class Outage:
@@ -17,8 +16,8 @@ class Outage:
         "OUTAGETYPE": None,
         "INCIDENTREF": None,
         "ENARNUMBER": None,
-        "OUTAGESTARTTIME": parse_datetime,
-        "ESTIMATEDRESTORATIONTIME": parse_datetime,
+        "OUTAGESTARTTIME": normalise_datetime,
+        "ESTIMATEDRESTORATIONTIME": normalise_datetime,
         "PLANNEDOUTAGE": None,
         "NOCUSTOMERSIMPACTED": None,
         "AFFECTED_AREA": None,
@@ -54,8 +53,8 @@ def print_feature_table(outages):
     for o in outages:
         print(
             fmt.format(
-                format_date(o.outagestarttime),
-                format_date(o.estimatedrestorationtime),
+                o.outagestarttime,
+                o.estimatedrestorationtime,
                 o.nocustomersimpacted,
                 o.affected_area,
             )
