@@ -4,8 +4,17 @@ Makes use of Western Power data.
 
 ## Installation
 
+For normal usage:
+```bash
+pip3 install ungoliant
+```
+
+For development, clone this repo and then run:
+
 ```bash
 poetry install
+# to run the tool
+poetry run ungoliant
 ```
 
 Example output:
