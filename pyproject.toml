@@ -1,21 +1,18 @@
-[tool.poetry]
+[project]
 name = "ungoliant"
 version = "0.1.2"
 description = "Unofficial CLI tool to display power outages in Perth"
+authors = [{ name = "Grahame Bowland", email = "grahame@oreamnos.com.au" }]
+requires-python = ">=3.9"
 readme = "README.md"
-authors = ["Grahame Bowland <grahame@oreamnos.com.au>"]
-license = "GPL3"
+dependencies = ["requests>=2.32.3,<3"]
 
-[tool.poetry.dependencies]
-python = "^3.9"
-requests = "^2.25.1"
+[project.scripts]
+ungoliant = "ungoliant.cli:main"
 
-[tool.poetry.dev-dependencies]
-black = "^20.8b1"
+[dependency-groups]
+dev = ["black>=25.1.0,<26"]
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.scripts]
-ungoliant = 'ungoliant.cli:main'
+requires = ["hatchling"]
+build-backend = "hatchling.build"

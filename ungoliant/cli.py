@@ -1,3 +1,4 @@
+import argparse
 import datetime
 import requests
 import sys
@@ -5,7 +6,9 @@ import sys
 
 def normalise_datetime(s):
     try:
-        return datetime.datetime.strptime(s, "%d/%m/%Y %I:%M %p").strftime("%Y-%m-%d %H:%M")
+        return datetime.datetime.strptime(s, "%d/%m/%Y %I:%M %p").strftime(
+            "%Y-%m-%d %H:%M"
+        )
     except ValueError:
         return s
 
